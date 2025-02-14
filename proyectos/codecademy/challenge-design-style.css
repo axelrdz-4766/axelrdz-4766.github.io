@@ -1,0 +1,101 @@
+body {
+    background-color: #E8E8E8;
+}
+
+h1 {
+    margin: 20px 180px;
+}
+
+.colors {
+    text-align: left;
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 50px;
+    background: #e8e8e8;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    /* Alinear los otros bloques */
+    display: block;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.bloque1 {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 30px;
+    background: #D3D3D3;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset; */
+}
+
+.bloque2 {
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 30px;
+    background: #A6A6A6;
+    /* box-shadow: inset 14px 14px 28px #8f8f8f,
+    inset -14px -14px 28px #bdbdbd; */
+}
+
+.bloque3 {
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+    color: white;
+    border-radius: 30px;
+    background: #242323;
+    /* box-shadow: inset 20px 20px 15px #171717,
+                inset -20px -20px 15px #312f2f;  */
+}
+
+.bloque4 {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    color: white;
+    margin: 10px;
+    border-radius: 30px;
+    background: #3A3A3A;
+    /* box-shadow: inset 16px 16px 32px #2a2a2a,
+                inset -16px -16px 32px #4a4a4a; */
+}
+
+.bloque5 {
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+    color: white;
+    border-radius: 30px;
+    background: #4d3d3d;
+    /* box-shadow: inset 20px 20px 40px #352a2a,
+                inset -20px -20px 40px #655050; */
+}
+
+.bloque6 {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    color: white;
+    border-radius: 30px;
+    background: #6B4F4F;
+    margin: 10px;
+    /* box-shadow: inset 20px 20px 40px #513c3c,
+                inset -20px -20px 40px #856262; */
+}
