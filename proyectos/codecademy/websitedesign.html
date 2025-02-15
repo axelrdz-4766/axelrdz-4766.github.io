@@ -3,29 +3,95 @@
 <head>
     <title>Desafio CodeCademy</title> 
     <link rel="stylesheet" href="challenge-design-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Mi Style Guide</h1>
     <div class="colors">
-        <h3>Colores</h3>
+        <h2>Colores</h2>
         <div class="bloque1">
-        <p>Gris Claro<br><br>#D3D3D3</p>
+            <p>Gris Claro<br><br>#D3D3D3</p>
+        </div>
+        <div class="bloque2">
+            <p>Gris Medio<br><br>#A6A6A6</p>
+        </div>
+        <div class="bloque3">
+            <p>Negro<br><br>#242323</p>
+        </div>
+        <div class="bloque4">
+            <p>Negro Ahumado<br><br>#3A3A3A</p>
+        </div>
+        <div class="bloque5">
+            <p>Cafe Oscuro<br><br>#4d3d3d</p>
+        </div>
+        <div class="bloque6">
+            <p>Cafe Tabaco<br><br>#6B4F4F</p>
+        </div>
     </div>
-    <div class="bloque2">
-        <p>Gris Medio<br><br>#A6A6A6</p>
+    
+    <div class="fonts">
+        <h2>Fuentes</h2>
+        <div class="font1">
+            <h3>Playfair Display <em>(Recomendado para titulos)</em></h3>
+            <p class="normal">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+            <p class="bold">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+            <p class="italic">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+        </div>
+        <div class="font2">
+            <h3>Lora <em>(Recomendado subtitulos o descripcciones)</em></h3>
+            <p class="normal">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+            <p class="bold">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+            <p class="italic">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+        </div>
+        <div class="font3">
+            <h3>Poppins <em>(Recomendado para parrafos)</em></h3>
+            <p class="normal">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+            <p class="bold">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+            <p class="italic">Este es el texto de ejemplo, solo agrego algunas mas palabras</p>
+        </div>
     </div>
-    <div class="bloque3">
-        <p>Negro<br><br>#242323</p>
-    </div>
-    <div class="bloque4">
-        <p>Negro Ahumado<br><br>#3A3A3A</p>
-    </div>
-    <div class="bloque5">
-        <p>Cafe Oscuro<br><br>#4d3d3d</p>
-    </div>
-    <div class="bloque6">
-        <p>Cafe Tabaco<br><br>#6B4F4F</p>
-    </div>
+
+    <div class="styles">
+        <h2>Estilos de texto</h2>
+        <div class="text-style">
+            <h3 class="header-text-style">H1: Titulo de pagina principal</h3>
+            <!-- <ul>
+                <li>font-family: Playfair Display</li>
+                <li>font-size: 26px</li>
+                <li>font-weight: Bold</li>
+            </ul> -->
+            <div class="code-container">
+                <pre><code>
+    <span class="selector">h1 {</span>
+        <span class="property">font-family</span>: <span class="value">"Playfair Display"</span>;
+        <span class="property">font-size</span>: <span class="value">26px</span>;
+        <span class="property">font-weight</span>: <span class="value">bold</span>;
+    <span class="selector">}</span>
+                </code></pre>
+            </div>
+            <h3 class="header-text-style">H2: Subtitulos</h3>
+            <div class="code-container">
+                <pre><code>
+    <span class="selector">h2 {</span>
+        <span class="property">font-family</span>: <span class="value">"Lora"</span>;
+        <span class="property">font-size</span>: <span class="value">18px</span>;
+        <span class="property">font-weight</span>: <span class="value">bold</span>;
+    <span class="selector">}</span>
+                </code></pre>
+            </div>
+            <h3 class="header-text-style">P: Parrafos</h3>
+            <div class="code-container">
+                <pre><code>
+    <span class="selector">p {</span>
+        <span class="property">font-family</span>: <span class="value">"Poppins"</span>;
+        <span class="property">font-size</span>: <span class="value">14px</span>;
+        <span class="property">font-weight</span>: <span class="value">regular</span>;
+    <span class="selector">}</span>
+                </code></pre>
+            </div>
+        </div>
     </div>
 </body>
 </html>
