@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+    font-size: 22px;
+    color: seashell;
+    background-color: #000;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/** Todo lo del header **/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: solid 1px;
+    height: 69px;
+}
+
+.header img {
+    height: 50px;
+}
+
+.header .menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.header .menu ul li a {
+    color: seashell;
+    text-decoration: underline;
+}
+
+/** Todo lo del section de mission **/
+
+.container-mission {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 100%;
+}
+
+.mission {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 1200px;
+    height: 700px;
+
+    /* Para la imagen de fondo */
+
+    background-image: url("https://content.codecademy.com/courses/freelance-1/unit-4/img-mission-background.jpg?_gl=1*1z0h9go*_gcl_au*MjAwNDk4NDYxNS4xNzM3Nzc5ODI2*_ga*NTE0NjExNzAyNi4xNzM3Nzc5ODE4*_ga_3LRZM6TM9L*MTc0MDAwNzkxMS43Ny4xLjE3NDAwMDc5MTguNTMuMC4w");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+.mission-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    width: 100%;
+    padding: 15px;
+}
+
+.mission-text h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.mission-text h4 {
+    font-size: 22px;
+}
+
+/* .mission img {
+    opacity: 0.6;
+    position: absolute;
+    width: 100%;
+    max-width: 1200px;
+    height: 700px;
+} */
+
+/** Todo lo del section de featured tea **/
+
+.section-tea {
+    text-align: center;
+    flex-direction: column;
+    max-width: 1000px;
+    width: 100%;
+    margin-top: 70px;
+}
+
+.section-tea h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.section-tea h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.teas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card-tea {
+    display: flex;
+    flex-direction: column;
+}
+.card-tea img {
+    max-height: 200px;
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+
+/** Todo lo del footer **/
+
+footer {
+    display: flex-end;
+    justify-content: left;
+    align-items: center;
+    padding: 20px;
+    opacity: 0.9;
+    color: seashell;
+}
