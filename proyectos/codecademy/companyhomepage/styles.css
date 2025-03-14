@@ -2,20 +2,28 @@ html, body {
     height: 100%;
     background-color: #111111;
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', "sans-serif";
     margin: 0;
 }
 
 body {
     display: flex;
     flex-direction: column;
+    background: linear-gradient(135deg, #1a1a1a, #333333);
+    background-image: url(".//img/91589877693.png");
+    background-size: 50%;
+    background-position: right;
+    background-repeat: no-repeat;
 }
+
+/* Estilos para el header */
 
 .menu {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 1.25rem;
     width: 95%;
+    background-color: transparent;
 }
 
 .menu ul {
@@ -27,24 +35,30 @@ body {
 .menu li {
     display: flex;
     list-style: none;
-    margin-right: 20px;
+    margin-right: 1.25rem;
     align-items: center;
 }
 
 .menu li a {
     text-decoration: none;
     color: #BDBDBE;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
+@media only screen and (max-width: 590px) {
+    .menu li a {
+        font-size: 0.8rem;
+    }
+}
+
 .menu li a:hover {
-    color: #0effa0;
+    color: #8b5cf6;
     text-shadow: 
-        0 0 5px #0effa0, 
-        0 0 10px #0effa0, 
-        0 0 20px #0effa0, 
-        0 0 30px #0effa0;
+        0 0 0.313rem #8b5cf6, 
+        0 0 0.625rem #8b5cf6, 
+        0 0 1.25rem #5a35d1, 
+        0 0 1.875rem #371b9d;
 }
 
 .logo-container {
@@ -67,10 +81,216 @@ main {
     flex: 1;
 }
 
+/* Pues el footer */
+
 footer {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
     padding: 1.4rem;
     color: #79797A;
+}
+
+/* Es la introduccion */
+
+.intro {
+    color: #DFDFDF;
+    display: flex;
+    height: 60rem;
+    width: 50vw;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-left: 2%;
+    gap: 0.5rem;
+}
+
+.intro h1 {
+    font-size: 5rem;
+}
+
+.intro p {
+    font-size: 2.5rem;
+}
+
+.more-info {
+    --glow-color: rgb(129, 204, 255); /* Azul cian más brillante */
+    --glow-spread-color: rgba(92, 162, 255, 0.8); /* Azul neón suave */
+    --enhanced-glow-color: rgb(174, 218, 255); /* Azul pastel */
+    --btn-color: rgb(35, 61, 136); /* Azul oscuro para el fondo */
+    
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    margin-left: 2em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1.5em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+    align-self: flex-start;
+    text-decoration: none;
+}
+
+.more-info::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+.more-info:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+.more-info:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+
+.brillo-rastrearte {
+    color: #8b5cf6;
+    text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6, 0 0 20px #5a35d1, 0 0 40px #371b9d;
+}
+
+@media only screen and (max-width: 620px) {
+    .intro {
+        width: 60vw;
+        height: 70rem;
+    }
+}
+
+/* la section de projects */
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7rem;
+    font-family: "Roboto";
+}
+
+.cards-projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.card {
+    display: flex;
+    background-color: #222222;
+    border: 1px solid #9B9B9D;
+    padding: 1rem;
+    width: 25vw;
+    height: 35vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 0.625rem;
+}
+
+@media only screen and (max-width: 1264px) {
+    .card {
+        width: 40vw;
+    }
+}
+
+@media only screen and (max-width: 794px) {
+    .card {
+        width: 80vw;
+        margin: 10px auto;
+        text-align: center;
+    }
+}
+
+.projects h3 {
+    color: #DFDFDF;
+    font-size: 2rem;
+}
+
+.projects p {
+    color: #9B9B9D;
+}
+
+/* La section de Team */
+
+.team-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 7rem;
+}
+
+.axel, .mau {
+    display: flex;
+    gap: 2%;
+    margin: 2%;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.axel img, .mau img {
+    width: 20vw;
+    height: 30vh;
+    border-radius: 10%;
+}
+
+.team-section h3 {
+    color: #DFDFDF;
+}
+
+.team-section p {
+    color: #9B9B9D;
+}
+
+@media only screen and (max-width: 1200px) {
+    .axel, .mau {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 970px) {
+    .team-section {
+        flex-direction: column;
+        margin-left: 2%;
+    }
+
+    .axel, .mau {
+        flex-direction: column;
+        width: 90vw;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .axel img, .mau img {
+        width: 35%;
+        height: 50%;
+    }
 }
