@@ -1,3 +1,7 @@
+html {
+    font-size: 16px;
+}
+
 p, h2, h3, h4, h5, h6 {
     font-family: "Helvetica", "Arial", sans-serif;
 }
@@ -7,12 +11,13 @@ body {
 }
 
 .card {
-    padding: 20px;
-    margin: 20px 40px;
-    width: 330px;
+    padding: 1.25rem;
+    margin: 1.25rem 2.5rem;
+    min-width: 20rem;
+    width: 20%;
     display: inline-block;
-    min-height: 370px;
-    border-radius: 20px;
+    min-height: 23.125rem;
+    border-radius: 1.25rem;
     background: #F1F2F6;
     box-shadow: 16px 16px 32px #dbdce0,
                 -16px -16px 32px #ffffff;
@@ -24,19 +29,29 @@ body {
 }
 
 div.codecademy {
-    margin: 50px 0 0 25px;
+    margin: 3.125rem 0 0 1.563rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-card {
+    display: flex;
+    flex-wrap: wrap;
+    width: 98%;
+    height: auto;
+    justify-content: flex-start;
 }
 
 .card-title {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 600;
     color: #9fa0a3;
     margin: 15px 0 0 10px;
 }
 
 .card-proyect {
-    min-height: 170px;
-    border-radius: 40px;
+    min-height: 10.625rem;
+    border-radius: 2.5rem;
     background: #e0e0e0;
     box-shadow: inset -16px -16px 82px #eff0f4,
     inset 16px 16px 82px #f3f4f8;
@@ -64,4 +79,11 @@ div.codecademy {
 
 .name-proyect p {
     color: #444;
+}
+
+@media only screen and (max-width: 940px) {
+    .container-card {
+        width: 90%;
+        justify-content: center;
+    }
 }
