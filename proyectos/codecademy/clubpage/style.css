@@ -1,0 +1,630 @@
+/* CSS Reset y Reglas Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    background-color: #0D0D0D;
+}
+
+p, h1, h2, h3 {
+    color: #EDEDED;
+}
+
+/* Para el Header */
+
+.menu ul{
+    display: flex;
+    padding: 0.5rem;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #B12EFF;
+    transition: color 0.6s ease;
+}
+
+.menu a:hover {
+    color: #3700ff;
+}
+
+.menu ul li {
+    margin: 0.8rem;
+    font-size: 1.2rem;
+    list-style: none;
+}
+
+/* Para mandar el Footer hasta abajo */
+main {
+    flex: 1;
+}
+
+footer {
+    display: flex;
+    padding: 1rem;
+    color: #BDBDBE;
+    opacity: 0.5;
+}
+
+/* Para el slogan */
+.hero {
+    background-image: url("../clubpage/images/Skyline-completo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    text-align: center;
+    color: white;
+}
+
+.hero button {
+    width: 5rem;
+    height: 2rem;
+}
+
+.hero h1 {
+    font-size: 10vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    margin-top: 6rem;
+    top: 15%;
+    left: 5%;
+    z-index: 2;
+    line-height: 1;
+    text-shadow: 
+        4px 4px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 4px rgba(255, 255, 255, 0.2),
+        0px 0px 20px rgba(255, 255, 255, 0.1);
+    filter: contrast(1.2) brightness(1.1);
+}
+
+.hero #correr {
+    display: flex;
+    align-items: flex-end;
+}
+
+.hero p {
+    font-size: 2rem;
+    margin-right: 3rem;
+}
+
+.slideInFromLeft {
+    animation: slideInFromLeft 1.5s ease-out;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Para el Boton que esta en el slogan */
+/* From Uiverse.io by Awadhesh684827 */ 
+[class*="boton-slogan"] {
+    display: flex;
+    font-family: "VT323", monospace;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    min-width: 10rem;
+    line-height: 1.5rem;
+    white-space: no-wrap;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 10.938rem;
+    margin-top: 2rem;
+    margin-right: 5rem;
+    padding: 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff7255;
+
+    .text,
+    .decoration {
+    display: inline-block;
+    }
+
+    .decoration {
+    display: block;
+    float: right;
+    }
+
+    &:hover,
+    &:focus {
+    animation-name: glitch;
+    animation-duration: 0.2s;
+    background-color: yellow;
+    color: black;
+    border: 1px solid yellow;
+
+    .text-decoration {
+        animation-name: blink;
+        animation-duration: 0.1s;
+        animation-iteration-count: infinite;
+    }
+
+    .decoration {
+        animation-name: blink;
+        animation-duration: 0.1s;
+        animation-iteration-count: infinite;
+    }
+    }
+
+    &:active {
+    background: none;
+    color: yellow;
+
+    .text-decoration {
+        animation-name: none;
+    }
+
+    .decoration {
+        animation-name: none;
+    }
+
+    :before,
+    :after {
+        display: none;
+    }
+    }
+}
+
+@keyframes glitch {
+    25% {
+    background-color: red;
+    transform: translateX(-10px);
+    letter-spacing: 10px;
+    }
+
+    35% {
+    background-color: green;
+    transform: translate(10px);
+    }
+
+    59% {
+    opacity: 0;
+    }
+
+    60% {
+    background-color: blue;
+    transform: translate(-10px);
+    filter: blur(5px);
+    }
+
+    100% {
+    background-color: yellow;
+    blur: (5px);
+    }
+}
+
+@keyframes blink {
+    50% {
+    opacity: 0;
+    }
+}
+
+@keyframes shrink {
+    100% {
+    width: 10%;
+    }
+}
+
+/* Para la section de About */
+
+.about {
+    display: flex;
+    flex-direction: column;
+    margin-top: 13rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.about h2 {
+    font-size: 4.5rem;
+    color: #B12EFF;
+}
+
+.aboutInfo {
+    display: flex;
+    margin-top: 2rem;
+    gap: 6rem; 
+    max-width: 100%;
+    height: auto;
+    max-height: 60rem;
+    padding: 3rem;
+    align-items: center;
+}
+
+.aboutInfo img {
+    max-width: 50%;
+    width: 50%;
+    height: auto;
+    max-height: 60rem;
+}
+
+.aboutInfoText {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.5rem;
+    color: #EDEDED; 
+}
+
+.aboutInfoText blockquote {
+    color: #5a35d1;
+    padding: 2.5rem;
+    font-family: "italic";
+}
+
+.aboutInfoText ul {
+    list-style: none;
+}
+
+.aboutInfoText span {
+    color: #8b5cf6;
+    text-shadow: 0 0 5px #8b5cf6, 0 0 10px #5a35d1;
+    font-weight: bold;
+}
+
+/* Para la section de Events */
+
+.events {
+    display: flex;
+    flex-direction: column;
+    margin-top: 11rem;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11rem;
+}
+
+.events h2 {
+    font-size: 4.5rem;
+    width: 70%;
+    color: #B12EFF;
+}
+
+.eventsTittle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    width: 60%;
+}
+
+.eventsTittle p {
+    display: flex;
+    font-size: 0.7rem;
+    color: gray;
+    justify-content: flex-end;
+    align-items: flex-end;
+    opacity: 0.5;
+}
+
+.eventsCard {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin: 2rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    padding: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 23rem;
+    height: auto;
+    min-width: 17rem;;
+    gap: 1rem;
+    border: 1.5px solid #ff00ff;
+    padding: 2rem;
+    box-shadow: 0px 0px 30px 1px rgba(204, 0, 255, 0.3);
+    align-items: center;
+    justify-content: center;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+    background-color: #121212;
+}
+
+.card h3 {
+    color: #B12EFF;
+    font-size: 1.7rem;
+}
+
+/* Para el Tema Responsivo */
+
+@media (max-width: 1870px) {
+    .eventsTittle {
+        width: 90%;
+        margin-bottom: 1rem;
+        flex-direction: column;
+        gap: 0.6rem;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .eventsCard {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 4rem;
+    }
+}
+
+/* Escritorios grandes */
+@media (max-width: 1536px) {
+    .hero h1 {
+        font-size: 8vw;
+    }
+
+    .hero p {
+        font-size: 4vw;
+        font-weight: bold;
+    }
+
+    .about {
+        margin-top: 3rem;
+    }
+
+    .about, p, ul, blockquote {
+        font-size: 1.3rem;
+    }
+
+    .aboutInfo {
+        flex-direction: row;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding: 1.5rem;
+    }
+
+    .aboutInfoText blockquote {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .events {
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Laptops y escritorios */
+@media (max-width: 1280px) {
+    .hero h1 {
+        font-size: 8vw;
+    }
+
+    .hero p {
+        font-size: 4vw;
+        font-weight: bold;
+    }
+
+    .about {
+        margin-top: 1rem;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about, p, ul, blockquote {
+        font-size: 1.1rem;
+    }
+
+    .aboutInfo {
+        flex-direction: row;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding: 1.5rem;
+    }
+
+    .aboutInfoText blockquote {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1130px) {
+    .about, p, ul, blockquote {
+        font-size: 1rem;
+    }
+}
+/* Tablets (horizontal) */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 10vw;
+    }
+
+    .hero p {
+        font-size: 5vw;
+        font-weight: bold;
+    }
+
+    .about {
+        margin-top: 1rem;
+        flex-direction: column;
+        width: 63%;
+        height: auto;
+        min-height: 78rem;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about, p, ul, blockquote {
+        font-size: 1rem;
+    }
+
+    .aboutInfo {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding: 1.5rem;
+    }
+
+    .aboutInfo img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        max-height: 40rem;
+        object-fit: cover;
+    }
+
+    .events {
+        margin-top: 6rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .about {
+        width: 65%;
+    }
+}
+
+@media (max-width: 950px) {
+    .about {
+        width: 70%;
+    }
+}
+
+@media (max-width: 900px) {
+    .about {
+        width: 73%;
+    }
+}
+
+@media (max-width: 850px) {
+    .about {
+        width: 78%;
+    }
+}
+
+@media (max-width: 800px) {
+    .about {
+        width: 83%;
+    }
+}
+
+@media (max-width: 780px) {
+    .about {
+        width: 85%;
+    }
+}
+
+/* Teléfonos grandes (landscape) */
+@media only screen and (max-width: 768px) {
+    .boton-slogan {
+        display: none;
+    }
+
+    .hero {
+        justify-content: flex-start;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .about, p, ul, blockquote {
+        font-size: 1rem;
+    }
+
+    .aboutInfoText ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .about {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .about {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .about {
+        width: 100%;
+    }
+}
+
+
+/* Teléfonos pequeños (portrait) */
+@media only screen and (max-width: 480px) {
+    .boton-slogan {
+        display: none;
+    }
+
+    .hero {
+        justify-content: flex-start;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .about, p, ul, blockquote {
+        font-size: 1rem;
+    }
+
+    .aboutInfoText blockquote {
+        padding: 1rem;
+    }
+
+    .eventsCard {
+        flex-direction: column;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+    }
+}

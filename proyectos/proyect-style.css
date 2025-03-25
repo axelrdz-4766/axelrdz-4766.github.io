@@ -37,8 +37,10 @@ div.codecademy {
 .container-card {
     display: flex;
     flex-wrap: wrap;
-    width: 98%;
+    width: 100%;
     height: auto;
+    margin-left: auto;
+    margin-right: auto;
     justify-content: flex-start;
 }
 
