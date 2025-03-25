@@ -570,6 +570,15 @@ footer {
         align-items: center;
     }
 
+    .about h2 {
+        font-size: 4.5rem;
+        color: #B12EFF;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
+
     .about, p, ul, blockquote {
         font-size: 1rem;
     }
@@ -617,14 +626,38 @@ footer {
         font-size: 1rem;
     }
 
+    .about h2 {
+        font-size: 3rem;
+    }
+
     .aboutInfoText blockquote {
         padding: 1rem;
     }
 
+    .eventsTittle h2 {
+        font-size: 3rem;
+    }
+
     .eventsCard {
         flex-direction: column;
-        width: 90%;
+        width: 100%;
         justify-content: center;
         align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card {
+        width: 100%;
+        margin: auto;
+        padding: auto;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+
+    .card h3 {
+        font-size: 1.5rem;
     }
 }
