@@ -31,6 +31,7 @@ const serializedData = structuredData ? JSON.stringify(structuredData).replace(/
 <html lang={language}>
   <head>
     <meta charset="utf-8" />
+    {active === 'home' && <meta name="google-site-verification" content="XuN8TK4C5ldmCAEReat7HoYpXAj8AtjOXqx17OmJwL4" />}
     <meta name="viewport" content="width=device-width" />
     <title>{documentTitle}</title>
     <meta name="description" content={description} />
