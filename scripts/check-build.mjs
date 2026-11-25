@@ -7,6 +7,7 @@ const site = 'https://axelrdz-4766.github.io';
 const pairs = [
   ['/', '/es/'], ['/about/', '/es/sobre-mi/'], ['/projects/', '/es/proyectos/'],
   ['/writing/', '/es/articulos/'], ['/contact/', '/es/contacto/'],
+  ['/projects/infinite/', '/es/proyectos/infinite/'],
 ];
 
 function read(path) {
@@ -42,4 +43,18 @@ assert.ok(!sitemap.includes(site + '/proyectos/'));
 assert.ok(existsSync(join(root, 'favicon.png')));
 assert.ok(existsSync(join(root, 'social.png')));
 assert.ok(!existsSync(join(root, 'proyectos')), 'Legacy project routes must stay out of the artifact.');
-console.log('Verified metadata and sitemap for 10 core routes, profile and site assets.');
+for (const [homepage, projects, project] of [
+  ['index.html', 'projects/index.html', '/projects/infinite/'],
+  ['es/index.html', 'es/proyectos/index.html', '/es/proyectos/infinite/'],
+]) {
+  for (const file of [homepage, projects]) {
+    assert.match(read(file), /<a class="project-link"[^>]+>/);
+    assert.ok(read(file).includes('class="project-link" href="' + project + '"'), file);
+  }
+  const html = read(project + 'index.html');
+  assert.match(html, /<figure class="recovery-flow"/);
+  assert.equal((html.match(/class="recovery-flow__steps"/g) ?? []).length, 2, project);
+  assert.match(html, /"@type":"Article"/);
+  assert.doesNotMatch(html, /Notas privadas para revisión|docs\/delivery\/infinite/i);
+}
+console.log('Verified metadata, sitemap, project navigation, recovery diagrams, and site assets.');

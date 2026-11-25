@@ -7,11 +7,16 @@ const calendarDate = z.preprocess(value => value instanceof Date && Number.isFin
   ? value.toISOString().slice(0, 10) : value, z.iso.date());
 
 const writing = defineCollection({
-  loader: glob({ base: './src/content/writing', pattern: '**/*.md' }),
+  loader: glob({
+    base: './src/content/writing',
+    pattern: '**/*.md',
+    generateId: ({ entry }) => entry.replace(/\.md$/, ''),
+  }),
   schema: z.object({
     title: z.string().trim().min(1),
     description: z.string().trim().min(1),
     slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+    section: z.enum(['writing', 'projects']).default('writing'),
     author: z.literal('Axel Rodriguez'),
     publishedAt: calendarDate,
     updatedAt: calendarDate.optional(),

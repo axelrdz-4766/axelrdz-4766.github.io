@@ -1,5 +1,5 @@
 ---
-import { content, githubUrl, name, pagePath, type Language } from '../lib/site';
+import { content, githubUrl, infinitePath, name, type Language } from '../lib/site';
 import type { Article } from '../lib/routes';
 import ArticleList from './ArticleList.astro';
 import Interests from './Interests.astro';
@@ -28,7 +28,7 @@ const copy = content[language];
         <h3>Infinite</h3>
         <p>{copy.infinite}</p>
       </div>
-      <a class="project-link" href={pagePath('projects', language) + '#infinite'}>
+      <a class="project-link" href={infinitePath(language)}>
         {copy.viewProject} <span aria-hidden="true">→</span>
       </a>
     </div>

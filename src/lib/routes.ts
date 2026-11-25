@@ -10,7 +10,7 @@ export type Route = PageRoute | ArticleRoute;
 const researchTypes = new Set(['research-note', 'experiment', 'scientific-publication']);
 
 export function articlePath(article: Article) {
-  return pagePath('writing', article.data.language) + article.data.slug + '/';
+  return pagePath(article.data.section, article.data.language) + article.data.slug + '/';
 }
 
 export async function getSiteRoutes(): Promise<Route[]> {

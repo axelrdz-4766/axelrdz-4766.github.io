@@ -19,6 +19,7 @@ export type Alternates = Partial<Record<Language, string>>;
 export const corePages = ['home', 'about', 'projects', 'writing', 'contact'] as const;
 export const navigation = ['about', 'projects', 'writing', 'contact'] as const;
 export const pagePath = (page: Page, language: Language) => paths[page][language];
+export const infinitePath = (language: Language) => pagePath('projects', language) + 'infinite/';
 export const absolute = (path: string) => new URL(path, siteUrl).href;
 
 export const content = {
@@ -43,8 +44,8 @@ export const content = {
     interestsTitle: 'Interests',
     interests: ['Computer Science', 'Artificial Intelligence', 'Software Engineering', 'Software Architecture', 'Cybersecurity', 'AI Security', 'Scientific Research'],
     selected: 'Selected project',
-    infinite: 'Octopus Labs’ main project.',
-    viewProject: 'View in Projects',
+    infinite: 'An agentic system from Octopus Labs for coordinating marketing work.',
+    viewProject: 'View Infinite',
     githubLabel: 'GitHub profile',
     contact: 'You can find me on GitHub.',
     writingEmpty: 'No articles have been published yet.',
@@ -82,8 +83,8 @@ export const content = {
     interestsTitle: 'Intereses',
     interests: ['Ciencias de la computación', 'Inteligencia artificial', 'Ingeniería de software', 'Arquitectura de software', 'Ciberseguridad', 'Seguridad de IA', 'Investigación científica'],
     selected: 'Proyecto destacado',
-    infinite: 'Proyecto principal de Octopus Labs.',
-    viewProject: 'Ver en Proyectos',
+    infinite: 'Sistema agéntico de Octopus Labs para coordinar trabajo de marketing.',
+    viewProject: 'Ver Infinite',
     githubLabel: 'Perfil de GitHub',
     contact: 'Puedes encontrarme en GitHub.',
     writingEmpty: 'Todavía no hay artículos publicados.',

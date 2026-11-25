@@ -13,7 +13,7 @@ const sections = headings.filter(heading => heading.depth === 2);
 
 <article class="content-frame article-page">
   <header class="article-header">
-    <a class="breadcrumb" href={pagePath('writing', data.language)}>{copy.pages.writing[0]}</a>
+    <a class="breadcrumb" href={pagePath(data.section, data.language)}>{copy.pages[data.section][0]}</a>
     <h1>{data.title}</h1>
     <p class="author-line">
       <a href={pagePath('about', data.language)}>{data.author}</a>

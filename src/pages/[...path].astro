@@ -6,7 +6,7 @@ import Interests from '../components/Interests.astro';
 import ProfileHome from '../components/ProfileHome.astro';
 import SiteLayout from '../components/SiteLayout.astro';
 import { getSiteRoutes, type Route } from '../lib/routes';
-import { content, githubUrl, pagePath } from '../lib/site';
+import { content, githubUrl, infinitePath, pagePath } from '../lib/site';
 import { articleData, profileData } from '../lib/structured-data';
 
 export const getStaticPaths = (async () => {
@@ -35,7 +35,7 @@ const schema = route.kind === 'article' ? articleData(path, route.article) : isP
 <SiteLayout {language} {path} {title} {description} {alternates} {showResearch}
   structuredData={schema}
   kind={route.kind === 'article' ? 'article' : isProfile ? 'profile' : 'website'}
-  active={route.kind === 'article' ? 'writing' : route.page}>
+  active={route.kind === 'article' ? route.article.data.section : route.page}>
   {route.kind === 'article' ? <ArticlePage article={route.article} /> : (
     route.page === 'home' ? <ProfileHome {language} articles={route.articles} /> : (
       <div class="content-frame inner-page">
@@ -56,6 +56,9 @@ const schema = route.kind === 'article' ? articleData(path, route.article) : isP
               <h2 id="infinite-title">Infinite</h2>
               <p>{copy.infinite}</p>
             </div>
+            <a class="project-link" href={infinitePath(language)}>
+              {copy.viewProject} <span aria-hidden="true">→</span>
+            </a>
           </section>
         )}
         {(route.page === 'writing' || route.page === 'research') && (
