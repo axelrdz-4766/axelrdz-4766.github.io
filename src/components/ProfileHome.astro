@@ -1,0 +1,47 @@
+---
+import { content, githubUrl, name, pagePath, type Language } from '../lib/site';
+import type { Article } from '../lib/routes';
+import ArticleList from './ArticleList.astro';
+import Interests from './Interests.astro';
+
+interface Props { language: Language; articles: Article[] }
+const { language, articles } = Astro.props;
+const copy = content[language];
+---
+
+<div class="content-frame home-grid">
+  <header class="home-intro">
+    <h1>{name}</h1>
+    <p>{copy.intro}</p>
+  </header>
+
+  <section class="home-project" aria-labelledby="project-title">
+    <h2 class="section-label" id="project-title">{copy.selected}</h2>
+    <div class="project-panel">
+      <div>
+        <h3>Infinite</h3>
+        <p>{copy.infinite}</p>
+      </div>
+      <a class="project-link" href={pagePath('projects', language) + '#infinite'}>
+        {copy.viewProject} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <Interests language={language} />
+
+  <section class="home-profile" aria-labelledby="profile-title">
+    <h2 class="section-label" id="profile-title">GitHub</h2>
+    <div class="profile-line">
+      <span>{copy.githubLabel}</span>
+      <a class="mono" href={githubUrl}>axelrdz-4766</a>
+    </div>
+  </section>
+
+  {articles.length > 0 && (
+    <section class="home-recent" aria-labelledby="recent-title">
+      <h2 class="section-label" id="recent-title">{copy.recent}</h2>
+      <ArticleList articles={articles.slice(0, 3)} heading={3} language={language} />
+    </section>
+  )}
+</div>

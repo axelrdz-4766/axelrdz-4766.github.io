@@ -1,0 +1,14 @@
+---
+import SiteLayout from '../components/SiteLayout.astro';
+import { content, pagePath } from '../lib/site';
+const en = content.en;
+const es = content.es;
+---
+
+<SiteLayout language="en" path="/404.html" title={en.notFound} description={en.notFound} noindex>
+  <div class="content-frame inner-page">
+    <h1>{en.notFound}</h1>
+    <p><a href={pagePath('home', 'en')}>{en.returnHome}</a></p>
+    <p lang="es"><a href={pagePath('home', 'es')}>{es.returnHome}</a></p>
+  </div>
+</SiteLayout>

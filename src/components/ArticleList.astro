@@ -1,0 +1,18 @@
+---
+import { articlePath, type Article } from '../lib/routes';
+import { formatDate, type Language } from '../lib/site';
+
+interface Props { articles: Article[]; language: Language; heading?: 2 | 3 }
+const { articles, language, heading = 2 } = Astro.props;
+const Heading = heading === 3 ? 'h3' : 'h2';
+---
+
+<ul class="article-list">
+  {articles.map(article => (
+    <li>
+      <time datetime={article.data.publishedAt}>{formatDate(article.data.publishedAt, language)}</time>
+      <Heading><a href={articlePath(article)}>{article.data.title}</a></Heading>
+      <p>{article.data.description}</p>
+    </li>
+  ))}
+</ul>

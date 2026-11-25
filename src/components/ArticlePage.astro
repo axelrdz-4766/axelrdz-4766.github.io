@@ -1,0 +1,52 @@
+---
+import { render } from 'astro:content';
+import type { Article } from '../lib/routes';
+import { content, formatDate, pagePath } from '../lib/site';
+
+interface Props { article: Article }
+const { article } = Astro.props;
+const { data } = article;
+const copy = content[data.language];
+const { Content, headings } = await render(article);
+const sections = headings.filter(heading => heading.depth === 2);
+---
+
+<article class="content-frame article-page">
+  <header class="article-header">
+    <a class="breadcrumb" href={pagePath('writing', data.language)}>{copy.pages.writing[0]}</a>
+    <h1>{data.title}</h1>
+    <p class="author-line">
+      <a href={pagePath('about', data.language)}>{data.author}</a>
+      <time datetime={data.publishedAt}>{formatDate(data.publishedAt, data.language)}</time>
+      {data.updatedAt && data.updatedAt !== data.publishedAt && (
+        <span>{copy.updated} <time datetime={data.updatedAt}>{formatDate(data.updatedAt, data.language)}</time></span>
+      )}
+    </p>
+  </header>
+  <div class:list={['article-layout', { 'article-with-index': sections.length > 1 }]}>
+    {sections.length > 1 && (
+      <nav class="article-index" aria-label={copy.onThisPage}>
+        <p class="section-label">{copy.onThisPage}</p>
+        <ul>
+          {sections.map(heading => <li><a href={'#' + encodeURIComponent(heading.slug)}>{heading.text}</a></li>)}
+        </ul>
+      </nav>
+    )}
+    <div class="prose">
+      <Content />
+      {(data.references.length > 0 || data.relatedRepository) && (
+        <section class="article-references">
+          {data.references.length > 0 && (
+            <>
+              <h2>{copy.references}</h2>
+              <ol>
+                {data.references.map(reference => <li><a href={reference.url}>{reference.label}</a></li>)}
+              </ol>
+            </>
+          )}
+          {data.relatedRepository && <p><a href={data.relatedRepository}>{copy.repository}</a></p>}
+        </section>
+      )}
+    </div>
+  </div>
+</article>

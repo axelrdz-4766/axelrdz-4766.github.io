@@ -1,0 +1,13 @@
+---
+import { content, type Language } from '../lib/site';
+
+interface Props { language: Language }
+const copy = content[Astro.props.language];
+---
+
+<section class="interests" aria-labelledby="interests-title">
+  <h2 class="section-label" id="interests-title">{copy.interestsTitle}</h2>
+  <ul>
+    {copy.interests.map(interest => <li>{interest}</li>)}
+  </ul>
+</section>

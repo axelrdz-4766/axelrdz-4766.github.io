@@ -1,0 +1,131 @@
+---
+import '../styles/site.css';
+import { absolute, content, githubUrl, languages, name, navigation, pagePath, type Alternates, type Language, type Page } from '../lib/site';
+
+interface Props {
+  language: Language;
+  path: string;
+  title: string;
+  description: string;
+  alternates?: Alternates;
+  active?: Page;
+  showResearch?: boolean;
+  structuredData?: object;
+  kind?: 'website' | 'profile' | 'article';
+  noindex?: boolean;
+}
+
+const {
+  language, path, title, description, alternates = {}, active,
+  showResearch = false, structuredData, kind = 'website', noindex = false,
+} = Astro.props;
+const copy = content[language];
+const canonical = absolute(path);
+const hasTranslation = Boolean(alternates.en && alternates.es);
+const documentTitle = active === 'home' ? copy.homeTitle : title + ' | ' + name;
+const navItems: Page[] = showResearch ? [...navigation.slice(0, 3), 'research', 'contact'] : [...navigation];
+const serializedData = structuredData ? JSON.stringify(structuredData).replace(/</g, '\\u003C') : undefined;
+---
+
+<!doctype html>
+<html lang={language}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {hasTranslation && languages.map(locale => (
+      <link rel="alternate" hreflang={locale} href={absolute(alternates[locale]!)} />
+    ))}
+    <meta property="og:type" content={kind} />
+    <meta property="og:site_name" content={name} />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={language === 'en' ? 'en_US' : 'es_MX'} />
+    {hasTranslation && <meta property="og:locale:alternate" content={language === 'en' ? 'es_MX' : 'en_US'} />}
+    <meta property="og:image" content={absolute('/social.png')} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={name} />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    {serializedData && <script type="application/ld+json" set:html={serializedData} />}
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem('axel-theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      } catch {
+        // CSS still follows the system preference.
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{copy.skip}</a>
+    <header class="site-header">
+      <div class="site-frame header-inner">
+        <a class="wordmark" href={pagePath('home', language)} aria-current={active === 'home' ? 'page' : undefined}>{name}</a>
+        <nav class="primary-nav" aria-label={copy.primaryNavigation}>
+          <ul>
+            {navItems.map(page => (
+              <li><a href={pagePath(page, language)} aria-current={active === page ? 'page' : undefined}>{copy.pages[page][0]}</a></li>
+            ))}
+          </ul>
+        </nav>
+        <div class="header-tools">
+          <nav aria-label={copy.languageNavigation}>
+            <ul class="languages">
+              {languages.map(locale => (
+                <li>
+                  {locale === language
+                    ? <span lang={locale} aria-current="true">{locale.toUpperCase()}</span>
+                    : <a lang={locale} href={alternates[locale] ?? pagePath(kind === 'article' ? 'writing' : 'home', locale)}
+                        aria-label={locale === 'en'
+                          ? (alternates.en ? 'EN · English' : kind === 'article' ? 'EN · Writing in English' : 'EN · English home')
+                          : (alternates.es ? 'ES · Español' : kind === 'article' ? 'ES · Artículos en español' : 'ES · Inicio en español')}>
+                        {locale.toUpperCase()}
+                      </a>}
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <button type="button" id="theme-toggle" class="theme-toggle" aria-label={copy.darkTheme} aria-pressed="false" hidden>
+            <span aria-hidden="true">{copy.theme}</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="site-frame footer-inner">
+        <a href={pagePath('home', language)}>{name}</a>
+        <a href={githubUrl} aria-label={copy.githubLabel}>GitHub</a>
+      </div>
+    </footer>
+    <script>
+      const button = document.querySelector<HTMLButtonElement>('#theme-toggle');
+      const root = document.documentElement;
+      const preference = matchMedia('(prefers-color-scheme: dark)');
+      const currentTheme = () => root.dataset.theme ?? (preference.matches ? 'dark' : 'light');
+      const updateState = () => button?.setAttribute('aria-pressed', String(currentTheme() === 'dark'));
+
+      if (button) {
+        updateState();
+        button.hidden = false;
+        preference.addEventListener('change', updateState);
+        button.addEventListener('click', () => {
+          const next = currentTheme() === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = next;
+          updateState();
+          try {
+            localStorage.setItem('axel-theme', next);
+          } catch {
+            // The current page still reflects the selected theme.
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
