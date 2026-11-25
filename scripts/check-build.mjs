@@ -38,18 +38,8 @@ const home = read('index.html');
 assert.ok(home.includes('"@type":"ProfilePage"') && home.includes('"@type":"Person"'));
 assert.ok(home.includes('"sameAs":["https://github.com/axelrdz-4766"]'));
 assert.ok(read('robots.txt').includes(`Sitemap: ${site}/sitemap.xml`));
-assert.ok(!sitemap.includes('proyectos/codecademy'));
+assert.ok(!sitemap.includes(site + '/proyectos/'));
 assert.ok(existsSync(join(root, 'favicon.png')));
 assert.ok(existsSync(join(root, 'social.png')));
-const legacy = [
-  'proyectos/proyectos.html', 'proyectos/codecademy/clubpage/index.html',
-  'proyectos/codecademy/companyhomepage/index.html', 'proyectos/codecademy/tea-cozy/index.html',
-  'proyectos/codecademy/websitedesign/websitedesign.html',
-];
-for (const file of legacy) {
-  const html = read(file);
-  assert.ok(html.includes('name="robots" content="noindex"'), file);
-  assert.ok(html.includes('http-equiv="refresh" content="0; url=/es/proyectos/"'), file);
-}
-assert.ok(!existsSync(join(root, 'proyectos/codecademy/companyhomepage/img')));
-console.log('Verified metadata and sitemap for 10 core routes, profile, site assets, and five legacy aliases.');
+assert.ok(!existsSync(join(root, 'proyectos')), 'Legacy project routes must stay out of the artifact.');
+console.log('Verified metadata and sitemap for 10 core routes, profile and site assets.');
