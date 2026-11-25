@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { content, githubHandle, name, professionalProfiles, siteUrl } from '../src/lib/site.ts';
 
 const root = 'dist';
-const site = 'https://axelrdz-4766.github.io';
+const site = siteUrl;
 const pairs = [
   ['/', '/es/'], ['/about/', '/es/sobre-mi/'], ['/projects/', '/es/proyectos/'],
   ['/writing/', '/es/articulos/'], ['/contact/', '/es/contacto/'],
@@ -35,9 +36,57 @@ for (const pair of pairs) {
   }
 }
 
-const home = read('index.html');
-assert.ok(home.includes('"@type":"ProfilePage"') && home.includes('"@type":"Person"'));
-assert.ok(home.includes('"sameAs":["https://github.com/axelrdz-4766"]'));
+const profiles = Object.values(professionalProfiles);
+const urls = profiles.map(({ url }) => url);
+assert.equal(new Set(urls).size, 3, 'Professional profile URLs must be distinct');
+
+function structuredData(html) {
+  const match = html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/);
+  assert.ok(match, 'Missing JSON-LD');
+  return JSON.parse(match[1]);
+}
+
+const expectedPerson = {
+  '@type': 'Person',
+  '@id': site + '/#axel-rodriguez',
+  name,
+  alternateName: githubHandle,
+  url: site + '/',
+  sameAs: urls,
+  jobTitle: 'Co-founder',
+  worksFor: { '@type': 'Organization', name: 'Octopus Labs' },
+};
+
+for (const [lang, homepage, about, contact, article] of [
+  ['en', 'index.html', 'about/index.html', 'contact/index.html', 'projects/infinite/index.html'],
+  ['es', 'es/index.html', 'es/sobre-mi/index.html', 'es/contacto/index.html', 'es/proyectos/infinite/index.html'],
+]) {
+  for (const file of [homepage, about]) {
+    const data = structuredData(read(file));
+    assert.equal(data['@type'], 'ProfilePage', file);
+    assert.equal(data.inLanguage, lang, file);
+    assert.deepEqual(data.mainEntity, expectedPerson, file);
+  }
+  const articleData = structuredData(read(article));
+  assert.equal(articleData['@type'], 'Article', article);
+  assert.equal(articleData.inLanguage, lang, article);
+  assert.deepEqual(articleData.author, expectedPerson, article);
+
+  for (const file of [homepage, contact]) {
+    const links = read(file).match(/<ul class="professional-links"[^>]*>(.*?)<\/ul>/s);
+    assert.ok(links, file);
+    assert.deepEqual([...links[1].matchAll(/href="([^"]+)"/g)].map(match => match[1]), urls, file);
+    for (const { label } of profiles) assert.ok(links[1].includes('>' + label + '<'), file);
+  }
+
+  const { homeTitle, pages } = content[lang];
+  const description = pages.home[1];
+  const page = read(homepage);
+  assert.ok(page.includes('<title>' + homeTitle + '</title>'), homepage);
+  assert.ok(page.includes('name="description" content="' + description + '"'), homepage);
+  assert.ok(page.includes('property="og:title" content="' + homeTitle + '"'), homepage);
+  assert.ok(page.includes('property="og:description" content="' + description + '"'), homepage);
+}
 assert.ok(read('robots.txt').includes(`Sitemap: ${site}/sitemap.xml`));
 assert.ok(!sitemap.includes(site + '/proyectos/'));
 assert.ok(existsSync(join(root, 'favicon.png')));

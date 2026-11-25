@@ -3,10 +3,11 @@ import type { GetStaticPaths } from 'astro';
 import ArticleList from '../components/ArticleList.astro';
 import ArticlePage from '../components/ArticlePage.astro';
 import Interests from '../components/Interests.astro';
+import ProfessionalLinks from '../components/ProfessionalLinks.astro';
 import ProfileHome from '../components/ProfileHome.astro';
 import SiteLayout from '../components/SiteLayout.astro';
 import { getSiteRoutes, type Route } from '../lib/routes';
-import { content, githubUrl, infinitePath, pagePath } from '../lib/site';
+import { content, infinitePath, pagePath } from '../lib/site';
 import { articleData, profileData } from '../lib/structured-data';
 
 export const getStaticPaths = (async () => {
@@ -68,7 +69,7 @@ const schema = route.kind === 'article' ? articleData(path, route.article) : isP
         {route.page === 'contact' && (
           <>
             <p class="page-lead">{copy.contact}</p>
-            <p><a class="mono" href={githubUrl}>{copy.githubLabel} · axelrdz-4766</a></p>
+            <ProfessionalLinks />
           </>
         )}
       </div>

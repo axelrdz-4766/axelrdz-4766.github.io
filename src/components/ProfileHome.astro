@@ -1,8 +1,9 @@
 ---
-import { content, githubUrl, infinitePath, name, type Language } from '../lib/site';
+import { content, infinitePath, name, type Language } from '../lib/site';
 import type { Article } from '../lib/routes';
 import ArticleList from './ArticleList.astro';
 import Interests from './Interests.astro';
+import ProfessionalLinks from './ProfessionalLinks.astro';
 
 interface Props { language: Language; articles: Article[] }
 const { language, articles } = Astro.props;
@@ -37,11 +38,8 @@ const copy = content[language];
   <Interests language={language} />
 
   <section class="home-profile" aria-labelledby="profile-title">
-    <h2 class="section-label" id="profile-title">GitHub</h2>
-    <div class="profile-line">
-      <span>{copy.githubLabel}</span>
-      <a class="mono" href={githubUrl}>axelrdz-4766</a>
-    </div>
+    <h2 class="section-label" id="profile-title">{copy.professionalProfiles}</h2>
+    <ProfessionalLinks />
   </section>
 
   {articles.length > 0 && (

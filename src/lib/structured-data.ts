@@ -1,12 +1,13 @@
-import { absolute, githubUrl, name, type Language } from './site';
+import { absolute, githubHandle, name, professionalProfiles, type Language } from './site';
 import type { Article } from './routes';
 
 const person = {
   '@type': 'Person',
   '@id': absolute('/#axel-rodriguez'),
   name,
+  alternateName: githubHandle,
   url: absolute('/'),
-  sameAs: [githubUrl],
+  sameAs: Object.values(professionalProfiles).map(profile => profile.url),
   jobTitle: 'Co-founder',
   worksFor: { '@type': 'Organization', name: 'Octopus Labs' },
 };

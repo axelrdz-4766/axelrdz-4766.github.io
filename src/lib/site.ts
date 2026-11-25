@@ -1,6 +1,11 @@
 export const siteUrl = 'https://axelrdz-4766.github.io';
 export const name = 'Axel Rodriguez';
-export const githubUrl = 'https://github.com/axelrdz-4766';
+export const githubHandle = 'axelrdz-4766';
+export const professionalProfiles = {
+  github: { label: 'GitHub', url: 'https://github.com/' + githubHandle },
+  linkedin: { label: 'LinkedIn', url: 'https://www.linkedin.com/in/axel-rodr%C3%ADguez-pati%C3%B1o/' },
+  hackTheBox: { label: 'Hack The Box', url: 'https://app.hackthebox.com/public/users/1799296' },
+} as const;
 
 export const languages = ['en', 'es'] as const;
 export type Language = (typeof languages)[number];
@@ -25,14 +30,14 @@ export const absolute = (path: string) => new URL(path, siteUrl).href;
 export const content = {
   en: {
     pages: {
-      home: ['Axel Rodriguez', 'Axel Rodriguez, co-founder of Octopus Labs, works on Infinite and studies computer science independently through OSSU.'],
+      home: ['Axel Rodriguez', 'Axel Rodriguez develops software, co-founded Octopus Labs, and studies computer science independently. He writes about engineering and research.'],
       about: ['About', 'About Axel Rodriguez, his work at Octopus Labs and his independent study of computer science through OSSU.'],
       projects: ['Projects', 'Projects by Axel Rodriguez, featuring Infinite, the main project of Octopus Labs.'],
       writing: ['Writing', 'Technical articles, notes, and experiments by Axel Rodriguez.'],
-      contact: ['Contact', 'Find Axel Rodriguez on his confirmed GitHub profile.'],
+      contact: ['Contact', 'Find Axel Rodriguez on GitHub, LinkedIn, and Hack The Box.'],
       research: ['Research', 'Research notes, experiments, and scientific publications by Axel Rodriguez.'],
     },
-    homeTitle: 'Axel Rodriguez | Engineering and research',
+    homeTitle: 'Axel Rodriguez | Engineering and research · Octopus Labs',
     intro: [
       'I develop software, co-founded Octopus Labs, and study computer science on my own. I like understanding how things work under the hood, from hardware to artificial intelligence.',
       'I’m obsessed with understanding why something works the way it does and what I could do to improve it. The harder it looks to fix, the more I want to try. Building and experimenting is my favorite way to find out.',
@@ -47,7 +52,8 @@ export const content = {
     infinite: 'An agentic system from Octopus Labs for coordinating marketing work.',
     viewProject: 'View Infinite',
     githubLabel: 'GitHub profile',
-    contact: 'You can find me on GitHub.',
+    professionalProfiles: 'Professional profiles',
+    contact: 'You can find me on these professional profiles.',
     writingEmpty: 'No articles have been published yet.',
     recent: 'Recent writing',
     references: 'References',
@@ -64,14 +70,14 @@ export const content = {
   },
   es: {
     pages: {
-      home: ['Axel Rodriguez', 'Axel Rodriguez, cofundador de Octopus Labs, trabaja en Infinite y estudia ciencias de la computación de forma independiente con OSSU.'],
+      home: ['Axel Rodriguez', 'Axel Rodriguez desarrolla software, es cofundador de Octopus Labs y estudia ciencias de la computación por su cuenta. Escribe sobre ingeniería e investigación.'],
       about: ['Sobre mí', 'Conoce a Axel Rodriguez, su trabajo en Octopus Labs y su estudio independiente de ciencias de la computación con OSSU.'],
       projects: ['Proyectos', 'Proyectos de Axel Rodriguez, incluido Infinite, el proyecto principal de Octopus Labs.'],
       writing: ['Artículos', 'Artículos técnicos, notas y experimentos de Axel Rodriguez.'],
-      contact: ['Contacto', 'Encuentra a Axel Rodriguez en su perfil confirmado de GitHub.'],
+      contact: ['Contacto', 'Encuentra a Axel Rodriguez en GitHub, LinkedIn y Hack The Box.'],
       research: ['Investigación', 'Notas de investigación, experimentos y publicaciones científicas de Axel Rodriguez.'],
     },
-    homeTitle: 'Axel Rodriguez | Ingeniería e investigación',
+    homeTitle: 'Axel Rodriguez | Ingeniería e investigación · Octopus Labs',
     intro: [
       'Desarrollo software, soy cofundador de Octopus Labs y estudio ciencias de la computación por mi cuenta. Me gusta entender cómo funcionan las cosas por dentro, desde el hardware hasta la inteligencia artificial.',
       'Me obsesiona entender por qué algo funciona como funciona y qué podría hacer para mejorarlo. Cuanto más difícil parece arreglarlo, más ganas me dan de intentarlo. Construir y experimentar es mi forma favorita de averiguarlo.',
@@ -86,7 +92,8 @@ export const content = {
     infinite: 'Sistema agéntico de Octopus Labs para coordinar trabajo de marketing.',
     viewProject: 'Ver Infinite',
     githubLabel: 'Perfil de GitHub',
-    contact: 'Puedes encontrarme en GitHub.',
+    professionalProfiles: 'Perfiles profesionales',
+    contact: 'Puedes encontrarme en estos perfiles profesionales.',
     writingEmpty: 'Todavía no hay artículos publicados.',
     recent: 'Publicaciones recientes',
     references: 'Referencias',

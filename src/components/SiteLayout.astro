@@ -1,6 +1,6 @@
 ---
 import '../styles/site.css';
-import { absolute, content, githubUrl, languages, name, navigation, pagePath, type Alternates, type Language, type Page } from '../lib/site';
+import { absolute, content, languages, name, navigation, pagePath, professionalProfiles, type Alternates, type Language, type Page } from '../lib/site';
 
 interface Props {
   language: Language;
@@ -101,7 +101,7 @@ const serializedData = structuredData ? JSON.stringify(structuredData).replace(/
     <footer class="site-footer">
       <div class="site-frame footer-inner">
         <a href={pagePath('home', language)}>{name}</a>
-        <a href={githubUrl} aria-label={copy.githubLabel}>GitHub</a>
+        <a href={professionalProfiles.github.url} aria-label={copy.githubLabel}>{professionalProfiles.github.label}</a>
       </div>
     </footer>
     <script>

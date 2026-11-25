@@ -1,0 +1,9 @@
+---
+import { professionalProfiles } from '../lib/site';
+---
+
+<ul class="professional-links" role="list">
+  {Object.values(professionalProfiles).map(({ label, url }) => (
+    <li><a href={url}>{label}</a></li>
+  ))}
+</ul>
