@@ -12,7 +12,13 @@ const copy = content[language];
 <div class="content-frame home-grid">
   <header class="home-intro">
     <h1>{name}</h1>
-    <p>{copy.intro}</p>
+    {copy.intro.map(paragraph => <p>{paragraph}</p>)}
+    <figure class="home-quote">
+      <blockquote cite="https://www.swr.de/swrkultur/wissen/archivradio/david-hilbert-1930-radioansprache-102.html">
+        <q>{copy.homeQuote}</q>
+      </blockquote>
+      <figcaption>David Hilbert, 1930</figcaption>
+    </figure>
   </header>
 
   <section class="home-project" aria-labelledby="project-title">

@@ -151,6 +151,13 @@ h1, h2, h3, p, li { overflow-wrap: break-word; }
   max-width: 52ch;
   margin-block-start: 1.25rem;
 }
+.home-quote {
+  margin: 1.5rem 0 0;
+  padding-inline-start: 1rem;
+  border-inline-start: 2px solid var(--rule);
+}
+.home-quote blockquote { margin: 0; font: italic 1.12rem/1.5 var(--serif); }
+.home-quote figcaption { margin-block-start: .25rem; color: var(--muted); font-size: .875rem; }
 .home-project { grid-area: project; }
 .home-profile { grid-area: profile; }
 .home-recent { grid-area: recent; }
