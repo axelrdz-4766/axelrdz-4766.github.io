@@ -1,0 +1,46 @@
+---
+import type { Language } from '../lib/site';
+
+interface Props { language: Language }
+const { language } = Astro.props;
+---
+
+<div class="prose">
+  {language === 'es' ? (
+    <>
+      <p>Cuando tenía unos dos años, se me ocurrió una forma de llegar a la Luna. Primero subiría a un poste, luego saltaría a una nube y desde ahí vería cómo seguir. El plan tenía varios problemas. En ese momento, el que más me intrigaba era cómo llegar a la nube.</p>
+
+      <p>Todavía me pasa algo parecido. Puedo estar mirando una lámpara y preguntarme por qué veo la luz. De ahí paso a cómo interactúa la luz con la materia, y termino leyendo sobre física, mecánica cuántica o química. Con un mensaje de texto me pasa lo mismo. Lo que empezó como una pregunta sobre cómo llega de un teléfono a otro puede terminar en una tarde leyendo sobre protocolos y electrónica.</p>
+
+      <p>Creo que lo que mejor se me da es hacer preguntas, incluso sobre las ideas de las que estoy más convencido. Tengo una frase para recordármelo: «La emoción mata la razón». Me la digo cuando me entusiasma tanto una explicación que empiezo a darla por cierta. Ahí es cuando más me sirve preguntarme qué tendría que observar para cambiar de opinión.</p>
+
+      <p>El primer artículo que escribí se llamaba <em>La correlación del saber</em>. Me daba vergüenza publicarlo por si estaba equivocado, así que terminé probando la idea en mí durante los dos años siguientes. Cuando aprendía algo, buscaba dónde más podía reconocer ese patrón y hasta dónde me servía la comparación. Con el tiempo, empecé a entrar más rápido en temas que antes me parecían lejanos. Ya tenía preguntas por dónde empezar.</p>
+
+      <p>Cuando reconozco un patrón en dos sistemas distintos, me pregunto qué lo produce en cada uno y en qué punto deja de servir la comparación. Mi formación como pentester me enseñó a mirar un mismo sistema desde el lugar de quien lo diseña, de quien lo usa y de quien pone a prueba sus supuestos. Cada perspectiva me lleva a preguntar qué puedo observar desde ahí, qué estoy dando por hecho y qué parte de mi explicación sigue siendo válida cuando cambio de lugar.</p>
+
+      <p>Encontré una forma de pensar parecida en Carlo Rovelli. En <a href="https://www.anagrama-ed.es/libro/argumentos/agujeros-blancos/9788433927477/A_616"><cite>Agujeros blancos: Dentro del horizonte</cite></a>, nos lleva en un viaje imaginario al interior de un agujero negro. Me interesa ese gesto de cambiar el lugar desde el que miramos. Al cruzar el horizonte, cambia qué señales pueden llegar a quién. Pensar desde ambos lados permite preguntarse qué puede saber cada observador y de dónde vendría ese conocimiento.</p>
+
+      <p>Estudio ciencias de la computación por mi cuenta y soy cofundador de Octopus Labs, donde desarrollo Infinite. Construir software me da una forma de probar mis ideas. En Infinite, me he preguntado cómo comprobar que un agente autónomo terminó su tarea y que el resultado es correcto, y cómo mantener a varios agentes trabajando en paralelo sin perder la coordinación ni el seguimiento de la tarea que comparten. Me gustan los problemas en los que, antes de diseñar la solución, tengo que aclarar qué contaría como haber resuelto el problema.</p>
+
+      <p>Admiro a Leonardo da Vinci. Cuando me preguntaban a qué me quería dedicar, yo quería investigar, escribir, programar e inventar. Durante mucho tiempo me pregunté cuál de esas cosas tenía que elegir. Hoy las encuentro en lo que más disfruto hacer: seguir una pregunta hasta comprender qué está pasando y, si puedo, construir algo con lo que aprendí.</p>
+    </>
+  ) : (
+    <>
+      <p>When I was about two, I came up with a way to get to the Moon. First I would climb a pole, then jump onto a cloud and figure out the rest from there. The plan had a few problems. At the time, the one that intrigued me most was how to reach the cloud.</p>
+
+      <p>I still do something similar. I can be looking at a lamp and wonder how I see light at all. From there I get into how light interacts with matter, and I end up reading about physics, quantum mechanics, or chemistry. The same thing happens with a text message. A question about how it gets from one phone to another can turn into an afternoon reading about protocols and electronics.</p>
+
+      <p>I think what I do best is ask questions, even about the ideas I'm most convinced by. I have a phrase to remind myself: “Emotion kills reason.” I tell myself this when I get so excited about an explanation that I start taking it for granted. That's when it helps most to ask what I would have to observe to change my mind.</p>
+
+      <p>The first article I wrote was called <em lang="es">La correlación del saber</em> (“The Correlation of Knowledge”). I was embarrassed to publish it in case I was wrong, so I spent the next two years trying the idea out on myself. Whenever I learned something, I looked for where else I could recognize the pattern and how far the comparison would take me. Over time, I found it easier to get started in subjects that once seemed far removed from what I knew. I already had questions to start with.</p>
+
+      <p>When I recognize a pattern in two different systems, I ask what gives rise to it in each one and where the comparison breaks down. My training in penetration testing taught me to look at the same system through the eyes of the person who designs it, the person who uses it, and the person who tests its assumptions. Each perspective makes me ask what I can observe from there, what I'm taking for granted, and how much of my explanation still holds when I change positions.</p>
+
+      <p>I found a similar way of thinking in Carlo Rovelli. In <a href="https://www.penguinrandomhouse.com/books/724426/white-holes-by-carlo-rovelli/9780593545447/"><cite>White Holes</cite></a>, he takes us on an imagined journey inside a black hole. What interests me is the decision to move the point from which we're looking. Crossing the horizon changes which signals can reach whom. Thinking from both sides lets us ask what each observer can know and where that knowledge would come from.</p>
+
+      <p>I study computer science independently and co-founded Octopus Labs, where I develop Infinite. Building software gives me a way to test my ideas. In Infinite, I've asked how to check that an autonomous agent actually completed its task and got the right result, and how to keep multiple agents working in parallel while staying coordinated and keeping track of their shared task. I like problems that make me spell out what would count as solving them before I design a solution.</p>
+
+      <p>I admire Leonardo da Vinci. When people asked what I wanted to do, I wanted to do research, write, program, and invent. For a long time, I wondered which of those things I had to choose. These days, I find all of them in what I most enjoy doing: following a question until I understand what's happening and, if I can, building something with what I've learned.</p>
+    </>
+  )}
+</div>

@@ -1,5 +1,6 @@
 ---
 import type { GetStaticPaths } from 'astro';
+import AboutBio from '../components/AboutBio.astro';
 import ArticleList from '../components/ArticleList.astro';
 import ArticlePage from '../components/ArticlePage.astro';
 import Interests from '../components/Interests.astro';
@@ -43,11 +44,7 @@ const schema = route.kind === 'article' ? articleData(path, route.article) : isP
         <h1>{title}</h1>
         {route.page === 'about' && (
           <div class="about-grid">
-            <div class="prose">
-              <p>{copy.aboutWork}</p>
-              <p>{copy.aboutStudy}</p>
-              <p>{copy.aboutInterests}</p>
-            </div>
+            <AboutBio {language} />
             <Interests {language} />
           </div>
         )}

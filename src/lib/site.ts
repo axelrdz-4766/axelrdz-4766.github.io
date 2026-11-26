@@ -31,7 +31,7 @@ export const content = {
   en: {
     pages: {
       home: ['Axel Rodriguez', 'Axel Rodriguez develops software, co-founded Octopus Labs, and studies computer science independently. He writes about engineering and research.'],
-      about: ['About', 'About Axel Rodriguez, his work at Octopus Labs and his independent study of computer science through OSSU.'],
+      about: ['About', 'How Axel Rodriguez learns across disciplines, what penetration testing taught him about perspective, and how he applies those ideas to building Infinite.'],
       projects: ['Projects', 'Projects by Axel Rodriguez, featuring Infinite, the main project of Octopus Labs.'],
       writing: ['Writing', 'Technical articles, notes, and experiments by Axel Rodriguez.'],
       contact: ['Contact', 'Find Axel Rodriguez on GitHub, LinkedIn, and Hack The Box.'],
@@ -43,9 +43,6 @@ export const content = {
       'I’m obsessed with understanding why something works the way it does and what I could do to improve it. The harder it looks to fix, the more I want to try. Building and experimenting is my favorite way to find out.',
     ],
     homeQuote: 'We must know, we will know.',
-    aboutWork: 'I co-founded Octopus Labs. I work on Infinite, our main project.',
-    aboutStudy: 'I follow the Open Source Society University (OSSU) curriculum to study computer science independently.',
-    aboutInterests: 'I want to use this site to document what I learn and build, and to share technical writing and research as that work develops.',
     interestsTitle: 'Interests',
     interests: ['Computer Science', 'Artificial Intelligence', 'Software Engineering', 'Software Architecture', 'Cybersecurity', 'AI Security', 'Scientific Research'],
     selected: 'Selected project',
@@ -71,7 +68,7 @@ export const content = {
   es: {
     pages: {
       home: ['Axel Rodriguez', 'Axel Rodriguez desarrolla software, es cofundador de Octopus Labs y estudia ciencias de la computación por su cuenta. Escribe sobre ingeniería e investigación.'],
-      about: ['Sobre mí', 'Conoce a Axel Rodriguez, su trabajo en Octopus Labs y su estudio independiente de ciencias de la computación con OSSU.'],
+      about: ['Sobre mí', 'Cómo aprende Axel Rodriguez entre disciplinas, qué le enseñó su formación como pentester y cómo aplica esas ideas al desarrollar Infinite.'],
       projects: ['Proyectos', 'Proyectos de Axel Rodriguez, incluido Infinite, el proyecto principal de Octopus Labs.'],
       writing: ['Artículos', 'Artículos técnicos, notas y experimentos de Axel Rodriguez.'],
       contact: ['Contacto', 'Encuentra a Axel Rodriguez en GitHub, LinkedIn y Hack The Box.'],
@@ -83,9 +80,6 @@ export const content = {
       'Me obsesiona entender por qué algo funciona como funciona y qué podría hacer para mejorarlo. Cuanto más difícil parece arreglarlo, más ganas me dan de intentarlo. Construir y experimentar es mi forma favorita de averiguarlo.',
     ],
     homeQuote: 'Debemos saber, sabremos',
-    aboutWork: 'Soy cofundador de Octopus Labs. Trabajo en Infinite, nuestro proyecto principal.',
-    aboutStudy: 'Sigo el plan de estudios de Open Source Society University (OSSU) para estudiar ciencias de la computación de forma independiente.',
-    aboutInterests: 'Quiero usar este sitio para documentar lo que aprendo y construyo, y compartir artículos técnicos e investigaciones a medida que avance ese trabajo.',
     interestsTitle: 'Intereses',
     interests: ['Ciencias de la computación', 'Inteligencia artificial', 'Ingeniería de software', 'Arquitectura de software', 'Ciberseguridad', 'Seguridad de IA', 'Investigación científica'],
     selected: 'Proyecto destacado',
