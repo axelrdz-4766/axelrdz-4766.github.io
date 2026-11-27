@@ -3,6 +3,7 @@ title: "Pawn’s Passage: from my first if statement to 23rd place"
 description: "How I designed a bot to recognize attack patterns and reached 23rd place in Pawn’s Passage, a 2025 CodeCombat AI League arena."
 slug: pawns-passage
 section: projects
+projectTitle: Pawn’s Passage
 author: Axel Rodriguez
 publishedAt: "2026-11-26"
 language: en
@@ -24,8 +25,6 @@ images:
 references:
   - label: Official Pawn’s Passage leaderboard
     url: https://codecombat.com/play/ladder/pawns-passage
-  - label: Replay of one of my matches
-    url: "https://codecombat.com/play/spectate/pawns-passage?session-one=67e3404069051edf1a7cd31b&session-two=68067b7c1a1b8b9ea5d5cbaa"
   - label: "CodeCombat AI League · Season 13: Checkmate Challenge"
     url: https://codecombat.com/league/the-samuraisdd
 ---

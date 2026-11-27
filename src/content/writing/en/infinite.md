@@ -3,6 +3,7 @@ title: "Infinite and the engineering of autonomous work"
 description: "How Infinite coordinates agents, recovers work after interruptions, and verifies outcomes and decisions."
 slug: infinite
 section: projects
+includeInWritingIndex: true
 author: Axel Rodriguez
 publishedAt: "2026-11-25"
 language: en

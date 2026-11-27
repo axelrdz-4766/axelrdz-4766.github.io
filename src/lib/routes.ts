@@ -26,12 +26,13 @@ export async function getSiteRoutes(): Promise<Route[]> {
 
   for (const language of languages) {
     const localizedArticles = byLanguage(language);
+    const writing = localizedArticles.filter(({ data }) => data.section === 'writing' || data.includeInWritingIndex);
     for (const page of corePages) {
       routes.push({
         kind: 'page', language, page, path: pagePath(page, language),
         alternates: { en: pagePath(page, 'en'), es: pagePath(page, 'es') },
         articles: page === 'projects' ? localizedArticles.filter(article => article.data.section === 'projects')
-          : page === 'home' || page === 'writing' ? localizedArticles : [],
+          : page === 'home' || page === 'writing' ? writing : [],
       });
     }
 

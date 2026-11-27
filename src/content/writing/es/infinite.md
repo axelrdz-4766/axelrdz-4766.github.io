@@ -3,6 +3,7 @@ title: "Infinite y la ingeniería del trabajo autónomo"
 description: "Cómo el backend de Infinite coordina agentes, recupera tareas bajo fallos y verifica resultados y decisiones."
 slug: infinite
 section: projects
+includeInWritingIndex: true
 author: Axel Rodriguez
 publishedAt: "2026-11-25"
 language: es

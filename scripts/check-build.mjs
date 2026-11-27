@@ -111,9 +111,18 @@ const pawnsImages = [
   '/images/pawns-passage/clasificacion-codecombat.png',
   '/images/pawns-passage/distribucion-jugadores-codecombat.png',
 ];
-for (const [projects, lang] of [['/projects/', 'en'], ['/es/proyectos/', 'es']]) {
+for (const [projects, writing, home, lang] of [
+  ['/projects/', '/writing/', '/', 'en'],
+  ['/es/proyectos/', '/es/articulos/', '/es/', 'es'],
+]) {
   const project = projects + 'pawns-passage/';
-  assert.ok(read(projects + 'index.html').includes('href="' + project + '"'), project);
+  const projectIndex = read(projects + 'index.html');
+  assert.match(projectIndex, /<section class="project-panel project-detail" id="pawns-passage"/);
+  assert.ok(projectIndex.includes('class="project-link" href="' + project + '"'), project);
+  for (const path of [writing, home]) {
+    assert.ok(!read(path + 'index.html').includes('href="' + project + '"'), path);
+  }
+  assert.ok(read(writing + 'index.html').includes('href="' + projects + 'infinite/"'), writing);
 
   const html = read(project + 'index.html');
   const data = structuredData(html);
@@ -121,6 +130,8 @@ for (const [projects, lang] of [['/projects/', 'en'], ['/es/proyectos/', 'es']])
   assert.equal(data.inLanguage, lang);
   assert.deepEqual(data.author, expectedPerson);
   assert.deepEqual(data.image, pawnsImages.map(path => site + path));
+  assert.ok(data.citation.includes('https://codecombat.com/play/ladder/pawns-passage'), project);
+  assert.ok(!html.includes('/play/spectate/pawns-passage'), project);
   assert.ok(html.includes('property="og:image" content="' + data.image[0] + '"'), project);
   const figures = [...html.matchAll(/<figure class="article-image">\s*<a href="([^"]+)">\s*<img src="([^"]+)" alt="([^"]+)"/g)];
   assert.deepEqual(figures.map(match => match[1]), pawnsImages);

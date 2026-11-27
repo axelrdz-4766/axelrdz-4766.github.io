@@ -17,6 +17,8 @@ const writing = defineCollection({
     description: z.string().trim().min(1),
     slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
     section: z.enum(['writing', 'projects']).default('writing'),
+    projectTitle: z.string().trim().min(1).optional(),
+    includeInWritingIndex: z.boolean().default(false),
     author: z.literal('Axel Rodriguez'),
     publishedAt: calendarDate,
     updatedAt: calendarDate.optional(),
