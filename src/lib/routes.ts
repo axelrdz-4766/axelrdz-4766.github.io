@@ -25,11 +25,13 @@ export async function getSiteRoutes(): Promise<Route[]> {
   const routes: Route[] = [];
 
   for (const language of languages) {
+    const localizedArticles = byLanguage(language);
     for (const page of corePages) {
       routes.push({
         kind: 'page', language, page, path: pagePath(page, language),
         alternates: { en: pagePath(page, 'en'), es: pagePath(page, 'es') },
-        articles: page === 'home' || page === 'writing' ? byLanguage(language) : [],
+        articles: page === 'projects' ? localizedArticles.filter(article => article.data.section === 'projects')
+          : page === 'home' || page === 'writing' ? localizedArticles : [],
       });
     }
 

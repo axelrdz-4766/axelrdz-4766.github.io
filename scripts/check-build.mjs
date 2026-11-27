@@ -9,6 +9,7 @@ const pairs = [
   ['/', '/es/'], ['/about/', '/es/sobre-mi/'], ['/projects/', '/es/proyectos/'],
   ['/writing/', '/es/articulos/'], ['/contact/', '/es/contacto/'],
   ['/projects/infinite/', '/es/proyectos/infinite/'],
+  ['/projects/pawns-passage/', '/es/proyectos/pawns-passage/'],
 ];
 
 function read(path) {
@@ -106,4 +107,24 @@ for (const [homepage, projects, project] of [
   assert.match(html, /"@type":"Article"/);
   assert.doesNotMatch(html, /Notas privadas para revisión|docs\/delivery\/infinite/i);
 }
-console.log('Verified metadata, sitemap, project navigation, recovery diagrams, and site assets.');
+const pawnsImages = [
+  '/images/pawns-passage/clasificacion-codecombat.png',
+  '/images/pawns-passage/distribucion-jugadores-codecombat.png',
+];
+for (const [projects, lang] of [['/projects/', 'en'], ['/es/proyectos/', 'es']]) {
+  const project = projects + 'pawns-passage/';
+  assert.ok(read(projects + 'index.html').includes('href="' + project + '"'), project);
+
+  const html = read(project + 'index.html');
+  const data = structuredData(html);
+  assert.equal(data['@type'], 'Article');
+  assert.equal(data.inLanguage, lang);
+  assert.deepEqual(data.author, expectedPerson);
+  assert.deepEqual(data.image, pawnsImages.map(path => site + path));
+  assert.ok(html.includes('property="og:image" content="' + data.image[0] + '"'), project);
+  const figures = [...html.matchAll(/<figure class="article-image">\s*<a href="([^"]+)">\s*<img src="([^"]+)" alt="([^"]+)"/g)];
+  assert.deepEqual(figures.map(match => match[1]), pawnsImages);
+  assert.deepEqual(figures.map(match => match[2]), pawnsImages);
+  for (const image of pawnsImages) assert.ok(existsSync(join(root, image)), image);
+}
+console.log('Verified metadata, sitemap, project navigation, article images, recovery diagrams, and site assets.');

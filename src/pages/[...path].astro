@@ -7,7 +7,7 @@ import Interests from '../components/Interests.astro';
 import ProfessionalLinks from '../components/ProfessionalLinks.astro';
 import ProfileHome from '../components/ProfileHome.astro';
 import SiteLayout from '../components/SiteLayout.astro';
-import { getSiteRoutes, type Route } from '../lib/routes';
+import { articlePath, getSiteRoutes, type Route } from '../lib/routes';
 import { content, infinitePath, pagePath } from '../lib/site';
 import { articleData, profileData } from '../lib/structured-data';
 
@@ -32,11 +32,16 @@ const [title, description] = route.kind === 'article'
 const isProfile = route.kind === 'page' && (route.page === 'home' || route.page === 'about');
 const schema = route.kind === 'article' ? articleData(path, route.article) : isProfile
   ? profileData(path, language, description) : undefined;
+const featuredProjectPath = infinitePath(language);
+const otherProjects = route.kind === 'page' && route.page === 'projects'
+  ? route.articles.filter(article => articlePath(article) !== featuredProjectPath)
+  : [];
 ---
 
 <SiteLayout {language} {path} {title} {description} {alternates} {showResearch}
   structuredData={schema}
   kind={route.kind === 'article' ? 'article' : isProfile ? 'profile' : 'website'}
+  socialImage={route.kind === 'article' ? route.article.data.images[0] : undefined}
   active={route.kind === 'article' ? route.article.data.section : route.page}>
   {route.kind === 'article' ? <ArticlePage article={route.article} /> : (
     route.page === 'home' ? <ProfileHome {language} articles={route.articles} /> : (
@@ -49,15 +54,18 @@ const schema = route.kind === 'article' ? articleData(path, route.article) : isP
           </div>
         )}
         {route.page === 'projects' && (
-          <section class="project-panel project-detail" id="infinite" aria-labelledby="infinite-title">
-            <div>
-              <h2 id="infinite-title">Infinite</h2>
-              <p>{copy.infinite}</p>
-            </div>
-            <a class="project-link" href={infinitePath(language)}>
-              {copy.viewProject} <span aria-hidden="true">→</span>
-            </a>
-          </section>
+          <>
+            <section class="project-panel project-detail" id="infinite" aria-labelledby="infinite-title">
+              <div>
+                <h2 id="infinite-title">Infinite</h2>
+                <p>{copy.infinite}</p>
+              </div>
+              <a class="project-link" href={featuredProjectPath}>
+                {copy.viewProject} <span aria-hidden="true">→</span>
+              </a>
+            </section>
+            {otherProjects.length > 0 && <ArticleList articles={otherProjects} {language} />}
+          </>
         )}
         {(route.page === 'writing' || route.page === 'research') && (
           route.articles.length ? <ArticleList articles={route.articles} {language} />

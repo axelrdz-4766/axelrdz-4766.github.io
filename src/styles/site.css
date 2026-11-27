@@ -208,6 +208,7 @@ h1, h2, h3, p, li { overflow-wrap: break-word; }
 .about-grid { display: grid; grid-template-columns: minmax(0, 2.15fr) minmax(12rem, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
 .page-lead { font: 1.28rem/1.6 var(--serif); max-width: 63ch; margin-block-end: 1.2rem; }
 .project-detail { max-width: 48rem; scroll-margin: 1rem; }
+.project-detail + .article-list { margin-block-start: 2rem; }
 .article-list { list-style: none; margin: 0; padding: 0; max-width: 48rem; }
 .article-list li { border-block-end: 1px solid var(--rule); padding-block: 1.25rem; }
 .article-list li:first-child { padding-block-start: .3rem; }
@@ -233,6 +234,10 @@ h1, h2, h3, p, li { overflow-wrap: break-word; }
 .prose h2 { font-size: 1.45em; }
 .prose h3 { font-size: 1.16em; }
 .prose img { max-width: 100%; height: auto; }
+.article-image { margin-inline: 0; }
+.article-image a { display: inline-block; max-width: 100%; }
+.article-image img { display: block; }
+.article-image figcaption { margin-block-start: .45rem; color: var(--muted); font: .9rem/1.5 var(--sans); }
 .prose pre { padding: 1.125rem; overflow: auto; background: var(--inset); border: 1px solid var(--rule); }
 .prose code { font: .86em/1.65 var(--mono); }
 .prose :not(pre) > code { background: var(--inset); overflow-wrap: anywhere; }

@@ -12,12 +12,14 @@ interface Props {
   showResearch?: boolean;
   structuredData?: object;
   kind?: 'website' | 'profile' | 'article';
+  socialImage?: { src: string; alt: string; width: number; height: number };
   noindex?: boolean;
 }
 
 const {
   language, path, title, description, alternates = {}, active,
   showResearch = false, structuredData, kind = 'website', noindex = false,
+  socialImage = { src: '/social.png', alt: name, width: 1200, height: 630 },
 } = Astro.props;
 const copy = content[language];
 const canonical = absolute(path);
@@ -45,10 +47,10 @@ const serializedData = structuredData ? JSON.stringify(structuredData).replace(/
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={language === 'en' ? 'en_US' : 'es_MX'} />
     {hasTranslation && <meta property="og:locale:alternate" content={language === 'en' ? 'es_MX' : 'en_US'} />}
-    <meta property="og:image" content={absolute('/social.png')} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={name} />
+    <meta property="og:image" content={absolute(socialImage.src)} />
+    <meta property="og:image:width" content={String(socialImage.width)} />
+    <meta property="og:image:height" content={String(socialImage.height)} />
+    <meta property="og:image:alt" content={socialImage.alt} />
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
     {serializedData && <script type="application/ld+json" set:html={serializedData} />}
     <script is:inline>

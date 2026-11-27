@@ -28,6 +28,13 @@ const writing = defineCollection({
     ]),
     draft: z.boolean().default(true),
     translationId: z.string().trim().min(1).optional(),
+    images: z.array(z.object({
+      src: z.string().regex(/^\/images\/(?:[a-z0-9-]+\/)*[a-z0-9-]+\.(?:png|jpe?g|webp)$/),
+      alt: z.string().trim().min(1),
+      caption: z.string().trim().min(1),
+      width: z.int().positive(),
+      height: z.int().positive(),
+    })).default([]),
     references: z.array(z.object({ label: z.string().trim().min(1), url: webUrl })).default([]),
     relatedRepository: z.url({ protocol: /^https$/ }).optional(),
   }).refine(data => !data.updatedAt || data.updatedAt >= data.publishedAt, {

@@ -34,6 +34,14 @@ const sections = headings.filter(heading => heading.depth === 2);
     )}
     <div class="prose">
       <Content />
+      {data.images.map(image => (
+        <figure class="article-image">
+          <a href={image.src}>
+            <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
+          </a>
+          <figcaption>{image.caption}</figcaption>
+        </figure>
+      ))}
       {(data.references.length > 0 || data.relatedRepository) && (
         <section class="article-references">
           {data.references.length > 0 && (

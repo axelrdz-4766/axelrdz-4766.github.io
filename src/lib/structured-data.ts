@@ -24,7 +24,7 @@ export function profileData(path: string, language: Language, description: strin
 }
 
 export function articleData(path: string, article: Article) {
-  const { title, description, language, publishedAt, updatedAt, tags, references } = article.data;
+  const { title, description, language, publishedAt, updatedAt, tags, references, images } = article.data;
   const url = absolute(path);
   return {
     '@context': 'https://schema.org',
@@ -32,7 +32,7 @@ export function articleData(path: string, article: Article) {
     mainEntityOfPage: url,
     headline: title,
     description,
-    image: [absolute('/social.png')],
+    image: images.length ? images.map(image => absolute(image.src)) : [absolute('/social.png')],
     inLanguage: language,
     datePublished: publishedAt,
     dateModified: updatedAt ?? publishedAt,
